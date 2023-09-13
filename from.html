@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contact Form</title>
+    <script>
+      function validateForm() {
+        // Get the input values
+        var name = document.forms["contactForm"]["name"].value;
+        var phone = document.forms["contactForm"]["phone"].value;
+
+        // Regular expression to match only alphabetic characters in the name
+        var namePattern = /^[A-Za-z ]+$/;
+
+        // Regular expression to match a 10-digit phone number
+        var phonePattern = /^\d{10}$/;
+
+        // Check if the name contains numbers
+        if (!namePattern.test(name)) {
+          alert("Please enter a valid name with no numbers.");
+          return false;
+        }
+
+        // Check if the phone number is valid
+        if (!phonePattern.test(phone)) {
+          alert("Please enter a 10-digit phone number.");
+          return false;
+        }
+
+        // Form is valid
+        return true;
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Contact Form</h2>
+    <form name="contactForm" onsubmit="return validateForm()" method="post">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required /><br /><br />
+
+      <label for="phone">Phone Number:</label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        pattern="[0-9]{10}"
+        required
+      /><br /><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
